@@ -28,6 +28,13 @@ public class TestLambda1 {
 
         filter(heros, h -> h.hp > 100 && h.damage < 50);
 
+        filter(heros, TestLambda1::testHero);
+
+        heros
+                .stream()
+                .distinct()
+                .forEach(System.out::println);
+
     }
 
     private static void filter(List<Hero> heros, HeroChecker checker) {
@@ -36,6 +43,10 @@ public class TestLambda1 {
                 System.out.println(hero);
             }
         }
+    }
+
+    private static boolean testHero(Hero h) {
+        return h.hp>100 && h.damage<50;
     }
 
 }
